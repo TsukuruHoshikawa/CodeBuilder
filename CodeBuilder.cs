@@ -93,9 +93,9 @@ namespace CodeBuilder
             cb.NewLine(code);
             cb.BeginBlock();
         }
-        public BlockScope(CodeBuilder _codeBuilder)
+        public BlockScope(CodeBuilder codeBuilder)
         {
-            cb = _codeBuilder;
+            cb = codeBuilder;
             cb.BeginBlock();
         }
         public void Dispose()
