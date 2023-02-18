@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace CodeBuilder
+namespace Tsukuru
 {
     public class CodeBuilder
     {
