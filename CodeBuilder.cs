@@ -13,42 +13,53 @@ namespace CodeBuilder
             sb.Remove(sb.Length - 1, 1);
         }
 
-        public void AddIndent(int _indentLevel = 1)
+        public void AddIndent(int indentLevel = 1)
         {
-            indent += _indentLevel;
+            indent += indentLevel;
 
             space.Clear();
             for (var i = 0; i < indent; ++i)
                 space.Append('\t');
         }
 
+        public void AddCode(string code)
+        {
+            sb.Append(code);
+        }
+
+        public void AddCode(char code)
+        {
+            sb.Append(code);
+        }
+
         public void NewLine()
         {
-            sb.Append('\n');
-            sb.Append(space.ToString());
+            AddCode('\n');
+            AddCode(space.ToString());
         }
 
-        public void AddCode(string _code)
-        {
-            sb.Append(_code);
-        }
-
-        public void NewLine(string _code)
+        public void NewLine(string code)
         {
             NewLine();
-            AddCode(_code);
+            AddCode(code);
+        }
+
+        public void NewLine(char code)
+        {
+            NewLine();
+            AddCode(code);
         }
 
         public void BeginBlock()
         {
-            NewLine("{");
+            NewLine('{');
             AddIndent();
         }
 
         public void EndBlock()
         {
             AddIndent(-1);
-            NewLine("}");
+            NewLine('}');
         }
 
         public override string ToString()
@@ -67,6 +78,7 @@ namespace CodeBuilder
         {
             return new BlockScope(this);
         }
+
         public BlockScope CreateBlockScope(string code)
         {
             return new BlockScope(this, code);
