@@ -33,7 +33,7 @@ namespace CodeBuilder
             sb.Append(_code);
         }
 
-        public void AppendLine(string _code)
+        public void NewLine(string _code)
         {
             NewLine();
             AddCode(_code);
@@ -41,14 +41,14 @@ namespace CodeBuilder
 
         public void BeginBlock()
         {
-            AppendLine("{");
+            NewLine("{");
             AddIndent();
         }
 
         public void EndBlock()
         {
             AddIndent(-1);
-            AppendLine("}");
+            NewLine("}");
         }
 
         public override string ToString()
@@ -78,7 +78,7 @@ namespace CodeBuilder
         public BlockScope(CodeBuilder codeBuilder, string code)
         {
             cb = codeBuilder;
-            cb.AppendLine(code);
+            cb.NewLine(code);
             cb.BeginBlock();
         }
         public BlockScope(CodeBuilder _codeBuilder)
