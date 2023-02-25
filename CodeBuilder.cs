@@ -7,7 +7,7 @@ namespace Tsukuru
     {
         StringBuilder sb = new StringBuilder();
         int indent = 0;
-        StringBuilder space = new StringBuilder("");
+        string space = "";
         public void RemoveLastChar()
         {
             sb.Remove(sb.Length - 1, 1);
@@ -16,10 +16,7 @@ namespace Tsukuru
         public void AddIndent(int indentLevel = 1)
         {
             indent += indentLevel;
-
-            space.Clear();
-            for (var i = 0; i < indent; ++i)
-                space.Append('\t');
+            space = new string('\t', indent);
         }
 
         public void AddCode(string code)
@@ -35,7 +32,7 @@ namespace Tsukuru
         public void NewLine()
         {
             AddCode('\n');
-            AddCode(space.ToString());
+            AddCode(space);
         }
 
         public void NewLine(string code)
@@ -71,7 +68,7 @@ namespace Tsukuru
         {
             sb.Clear();
             indent = 0;
-            space.Clear();
+            space = "";
         }
 
         public BlockScope CreateBlockScope()
